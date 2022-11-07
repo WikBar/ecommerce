@@ -14,13 +14,17 @@ import java.util.Objects;
 @Controller
 @RequestMapping("/register")
 public class UserController {
+
+    @Autowired
+    private UserService userService;
+
     @Autowired
     private UserRepository userRepository;
 
-    @PostMapping("/add")
-    public ResponseEntity<String> addNewUser(User user){
+    @PostMapping
+    public ResponseEntity<String> addNewUser(@RequestBody User user){
 
-        if(Objects.nonNull(userRepository.findByName(user.getLogin()))) {
+        if(Objects.nonNull(userRepository.findByLogin(user.getLogin()))) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Account exists");
         }
         userRepository.save(user);
