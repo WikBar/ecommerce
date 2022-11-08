@@ -3,10 +3,11 @@ package com.wiktor.ecommerce.Repository;
 import com.wiktor.ecommerce.Model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.Optional;
+
 public interface UserRepository extends JpaRepository<User, Integer> {
 
-    User findByLogin(String login);
-    User findByEmail(String Email);
+    Optional<User> findByEmail(String email);
 
-    boolean existsByEmail(String s);
+    Object findByLogin(String login);
 }
