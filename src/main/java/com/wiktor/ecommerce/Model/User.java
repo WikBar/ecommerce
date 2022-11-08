@@ -11,7 +11,6 @@ import javax.persistence.*;
 @Table(name="users")
 @Setter
 @Getter
-
 @NoArgsConstructor
 
 public class User {
@@ -19,13 +18,13 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
 
-    @Column(name="Email",nullable = false,length=64)
+    @Column(name="Email",nullable = false,unique = true,length=64)
     private String email;
 
-    @Column(name="Login",nullable = false,unique = true,length = 50)
+    @Column(name="Login",nullable = false,length = 50)
     private String login;
 
-    @Column(name="Password")
+    @Column(name="Password",nullable = false,length=60)
     private String password;
 
     @Column(name="Name",nullable = false,length = 25)

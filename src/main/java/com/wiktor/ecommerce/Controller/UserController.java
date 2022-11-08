@@ -1,3 +1,4 @@
+/*
 package com.wiktor.ecommerce.Controller;
 
 import com.wiktor.ecommerce.Model.User;
@@ -32,3 +33,4 @@ public class UserController {
     }
 
 }
+*/
