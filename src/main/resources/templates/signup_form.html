@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:background-image="http://www.w3.org/1999/xhtml"
+      xmlns:height="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Witaj w M3</title>
+  <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+  <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container text-center bg">
+  <div>
+    <h1>Rejestracja - Witaj męczenniku</h1>
+  </div>
+  <form th:action="@{/process_register}" th:object="${user}"
+        method="post" style="max-width: 650px; margin: 0 auto;">
+    <div class="m-3 bg">
+
+      <div class="form-group row p-2">
+        <label class="col-3 col-form-label">E-mail: </label>
+        <div class="col-6 ">
+          <input type="email" th:field="*{email}" class="form-control" required maxlength="35"/>
+        </div>
+      </div>
+
+      <div class="form-group row p-2">
+        <label class="col-3 col-form-label">Password: </label>
+        <div class="col-6">
+          <input type="password" th:field="*{password}" class="form-control"
+                 required minlength="8" maxlength="30"/>
+        </div>
+      </div>
+
+      <div class="form-group row p-2">
+        <label class="col-3 col-form-label">First Name: </label>
+        <div class="col-6">
+          <input type="text" th:field="*{name}" class="form-control"
+                 required minlength="2" maxlength="20"/>
+        </div>
+      </div>
+
+      <div class="form-group row p-2">
+        <label class="col-3 col-form-label">Last Name: </label>
+        <div class="col-6">
+          <input type="text" th:field="*{surname}" class="form-control"
+                 required minlength="2" maxlength="20" />
+        </div>
+      </div>
+
+      <div class="p-2">
+        <button type="submit" class="btn btn-primary p-2">Sign Up</button>
+      </div>
+    </div>
+  </form>
+</div>
+</body>
+</html>

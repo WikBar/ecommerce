@@ -58,6 +58,7 @@ class EcommerceApplicationTests {
 
 	@Test
 	@Order(2)
+
 	void testCreateUserAllDataCorrect(){
 
 		//given
