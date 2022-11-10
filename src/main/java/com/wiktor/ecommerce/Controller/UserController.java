@@ -6,6 +6,7 @@ import com.wiktor.ecommerce.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -22,17 +23,18 @@ public class UserController {
 
     @Autowired
     private UserRepository userRepository;
+
     @GetMapping("")
     public String viewHomePage(){
         // return html page index from templates
         return "index";
     }
+
     @GetMapping("/register")
     public String viewRegisterPage(Model model){
         model.addAttribute("user", new User());
         return "signup_form";
     }
-
 
     @GetMapping("/users")
     public String viewUsersPage(Model model){
@@ -40,12 +42,24 @@ public class UserController {
         model.addAttribute("listUsers", listUsers);
         return "users";
     }
+
     @GetMapping("/login")
     public String viewLoginPage(Model model){
         model.addAttribute("login", new User());
         return "login";
     }
 
+    @PostMapping("/process_register")
+    public String processRegister(User user) {
+        System.out.println(user.getLogin());
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String encodedPassword = passwordEncoder.encode(user.getPassword());
+        user.setPassword(encodedPassword);
+
+        userRepository.save(user);
+
+        return "process_register";
+    }
 
 
     /*@PostMapping
