@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -cp target/classes:target/dependency/* EcommerceApplication
+web: java %JAVA_OPT% -cp target/classes;target/dependency/* com.wiktor.ecommerce.EcommerceApplication
